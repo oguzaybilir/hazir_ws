@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com)
+Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+For more information, please see http://wiki.ros.org/sw_urdf_exporter
+-->
+<robot name="t_car_2">
+
+	<link name="base_footprint" />
+
+	<link name="base_link">
+		<inertial>
+			<origin xyz="-0.053121 0.001089 0.17871" rpy="0 0 0" />
+			<mass value="77.764" />
+			<inertia ixx="7.9281" ixy="0.022844" ixz="0.16982" iyy="4.4347" iyz="0.0099095" izz="10.26" />
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://t_car_2/meshes/base_link.STL" />
+			</geometry>
+			<material name="">
+				<color rgba="0.75294 0.75294 0.75294 1" />
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://t_car_2/meshes/base_link.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<joint name="base_link_joint" type="continuous">
+		<origin xyz="0.053121 -0.001089 -0.17871" rpy="0 0 0" />
+		<parent link="base_footprint" />
+		<child link="base_link" />
+		<axis xyz="0 0 0" />
+	</joint>
+
+	<link name="sag_on">
+		<inertial>
+			<origin xyz="1.2745E-05 -0.0030415 1.7258E-05" rpy="0 0 0" />
+			<mass value="6.5048" />
+			<inertia ixx="0.18807" ixy="-6.9648E-08" ixz="-7.3865E-07" iyy="0.30704" iyz="1.7344E-08" izz="0.18807" />
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://t_car_2/meshes/sag_on.STL" />
+			</geometry>
+			<material name="">
+				<color rgba="0.75294 0.75294 0.75294 1" />
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://t_car_2/meshes/sag_on.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<joint name="sag_on_joint" type="continuous">
+		<origin xyz="0.95877 -0.51338 -0.53265" rpy="0 0 0" />
+		<parent link="base_link" />
+		<child link="sag_on" />
+		<axis xyz="0 0 0" />
+	</joint>
+
+	<link name="sag_arka">
+		<inertial>
+			<origin xyz="-1.3366E-05 -0.0030415 -1.678E-05" rpy="0 0 0" />
+			<mass value="6.5048" />
+			<inertia ixx="0.18807" ixy="-3.2501E-08" ixz="-8.1749E-07" iyy="0.30704" iyz="-1.096E-08" izz="0.18807" />
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://t_car_2/meshes/sag_arka.STL" />
+			</geometry>
+			<material name="">
+				<color rgba="0.75294 0.75294 0.75294 1" />
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://t_car_2/meshes/sag_arka.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<joint name="sag_arka_joint" type="continuous">
+		<origin xyz="-0.64123 -0.53838 -0.53564" rpy="0 0 0" />
+		<parent link="base_link" />
+		<child link="sag_arka" />
+		<axis xyz="0 0 0" />
+	</joint>
+
+	<link name="sol_on">
+		<inertial>
+			<origin xyz="-1.1358E-05 0.0030415 1.8202E-05" rpy="0 0 0" />
+			<mass value="6.5048" />
+			<inertia ixx="0.18807" ixy="-7.043E-08" ixz="3.8237E-07" iyy="0.30704" iyz="-7.9651E-09" izz="0.18807" />
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://t_car_2/meshes/sol_on.STL" />
+			</geometry>
+			<material name="">
+				<color rgba="0.75294 0.75294 0.75294 1" />
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://t_car_2/meshes/sol_on.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<joint name="sol_on_joint" type="continuous">
+		<origin xyz="0.95877 0.50662 -0.53265" rpy="0 0 0" />
+		<parent link="base_link" />
+		<child link="sol_on" />
+		<axis xyz="0 0 0" />
+	</joint>
+
+	<link name="sol_arka">
+		<inertial>
+			<origin xyz="6.677E-08 0.0030376 2.7557E-07" rpy="0 0 0" />
+			<mass value="6.5051" />
+			<inertia ixx="0.18807" ixy="-7.1377E-08" ixz="2.12E-07" iyy="0.30704" iyz="-7.5405E-09" izz="0.18807" />
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://t_car_2/meshes/sol_arka.STL" />
+			</geometry>
+			<material name="">
+				<color rgba="0.75294 0.75294 0.75294 1" />
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://t_car_2/meshes/sol_arka.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<joint name="sol_arka_joint" type="continuous">
+		<origin xyz="-0.64123 0.53212 -0.53564" rpy="0 0 0" />
+		<parent link="base_link" />
+		<child link="sol_arka" />
+		<axis xyz="0 0 0" />
+	</joint>
+
+</robot>

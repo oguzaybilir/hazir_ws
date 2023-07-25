@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by
+Stephen Brawner (brawner@gmail.com)
+Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+For more information, please see http://wiki.ros.org/sw_urdf_exporter
+-->
+<robot name="T-Car-2">
+
+    <link name="base_footprint" />
+
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="5" />
+            <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+        </inertial>
+        <visual>
+            <origin xyz="0.475 1.20 0.0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hazir/meshes/sase.stl" scale="0.0005 0.0005 0.0005" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.475 1.20 0.0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hazir/meshes/sase.stl" scale="0.0005 0.0005 0.0005" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="base_footprint_to_base_link" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="base_footprint" />
+        <child link="base_link" />
+    </joint>
+
+    <link name="sag_on">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="1" />
+            <inertia ixx="1" ixy="-0" ixz="0" iyy="1" iyz="0" izz="1" />
+        </inertial>
+        <visual>
+            <origin xyz="1.15 -0.35 0.55" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hazir/meshes/tekerlek.stl" scale="0.0005 0.0005 0.0005" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="1.15 -0.35 0.55" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hazir/meshes/tekerlek.stl" scale="0.0005 0.0005 0.0005" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="sag_on_joint" type="fixed">
+        <origin xyz="1.15 -0.35 0.55" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="sag_on" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <link name="sol_on">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="1" />
+            <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+        </inertial>
+        <visual>
+            <origin xyz="2.2 -0.53 0.55" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hazir/meshes/tekerlek.stl" scale="0.0005 0.0005 0.0005" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="2.2 -0.53 0.55" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hazir/meshes/tekerlek.stl" scale="0.0005 0.0005 0.0005" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="sol_on_joint" type="fixed">
+        <origin xyz="0.40 0.25 -0.044999" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="sol_on" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+</robot>

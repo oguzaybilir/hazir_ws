@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<launch>
+    <arg name="namespace" default="/" />
+    <arg name="world_name" default="$(find environment)/worlds/yarisma_update.world" />
+    <arg name="cmd_timeout" default="0.5" />
+    <arg name="use_sim_time" default="true" />
+    <arg name="gui" value="true" />
+    <arg name="headless" value="false" />
+    <arg name="debug" value="false" /> <!-- terminalde herhangi bir debug mesajı görmeyeceğiz -->
+
+    <arg name="x" default="-33.30" />
+    <arg name="y" default="-36.69" />
+    <arg name="z" default="0.39" />
+    <arg name="roll" default="0.0" />
+    <arg name="pitch" default="-0.0" />
+    <arg name="yaw" default="1.56" />
+
+    <!-- Vehicle pose -->
+
+    <param name="robot_description" command="$(find xacro)/xacro $(find t_car)/urdf/T-Car-2.urdf" />
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world_name)"/>
+        <arg name="gui" value="$(arg gui)"/>
+    </include>
+
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" output="screen" respawn="false"
+        args="-param robot_description -urdf -model hazir 
+        -x $(arg x) -y $(arg y) -z $(arg z) 
+        -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)" />
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen">
+        <param name="publish_frequency" value="30.0" />
+    </node>
+
+    <node name="controller_spawner" pkg="controller_manager" type="spawner"
+        args="$(find hazir)/config/joint_params.yaml" />
+
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
+        <!-- <param name="use_gui" value="true"/> -->
+    </node>
+
+    <!-- Control the steering, axle, and shock absorber joints.-->
+    <node name="ackermann_controller" pkg="hazir" type="ackermann_controller">
+        <param name="cmd_timeout" value="0.5" />
+        <rosparam file="$(find hazir)/config/ackermann_params.yaml" command="load" />
+    </node>
+
+    <!-- RVİZ -->
+
+    <!-- Start RViz -->
+    <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ac_description)/rviz/rviz_cfg.rviz"
+        required="true" /> -->
+
+
+
+</launch>
